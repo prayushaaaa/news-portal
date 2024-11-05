@@ -52,6 +52,26 @@ function Detail() {
             email: "",
             comment: ""
         });
+    };
+
+    const handleLikePost = async () => {
+        const json = {
+            user_id: 2,
+            post_id: post.id,
+        };
+        const response = await apiInstance.post(`post/like-post/`, json);
+        Toast("success", response.data?.message)
+        fetchData();
+    };
+
+    const handleBookmarkPost = async () => {
+        const json = {
+            user_id: 2,
+            post_id: post.id,
+        };
+        const response = await apiInstance.post(`post/bookmark-post/`, json);
+        Toast("success", response.data?.message)
+        fetchData();
     }
 
     return (
@@ -115,8 +135,14 @@ function Detail() {
                                             </a>
                                         </li>
                                     ))}
-
                                 </ul>
+                                <button onClick={handleLikePost} className="btn btn-outline-success">
+                                    <i className="fas fa-thumbs-up me-2"></i>
+                                    {post?.likes?.length}
+                                </button>
+                                <button onClick={handleBookmarkPost} className="btn btn-outline-primary ms-2">
+                                    <i className="fas fa-bookmark"></i>
+                                </button>
                             </div>
                         </div>
                         {/* Left sidebar END */}
