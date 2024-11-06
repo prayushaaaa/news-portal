@@ -96,10 +96,10 @@ function Header() {
                                 {isLoggedIn() ? (
                                     <>
                                         <Link to={"/dashboard/"} className="btn btn-success" href="dashboard.html">
-                                            Dashboard <i className="fas fa-user-plus"></i>
+                                            Dashboard <i className="fas fa-home"></i>
                                         </Link>
                                         <Link to={"/logout/"} className="btn btn-success ms-2" href="dashboard.html">
-                                            Logout <i className="fas fa-sign-in-alt"></i>
+                                            Logout <i className="fas fa-sign-out-alt"></i>
                                         </Link>
                                     </>
                                 ) : (
