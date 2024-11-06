@@ -371,21 +371,15 @@ class DashboardPostCreateAPIView(generics.CreateAPIView):
         tags = request.data.get('tags')
         category_id = request.data.get('category')
         post_status = request.data.get('post_status')
-
-        print(user_id)
-        print(title)
-        print(image)
-        print(description)
-        print(tags)
-        print(category_id)
-        print(post_status)
-
+        
         user = api_models.User.objects.get(id=user_id)
+        profile=api_models.Profile.objects.get(user=user)
         category = api_models.Category.objects.get(id=category_id)
 
         post = api_models.Post.objects.create(
             user=user,
             title=title,
+            profile=profile,
             image=image,
             description=description,
             tags=tags,
