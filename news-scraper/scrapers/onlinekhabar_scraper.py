@@ -36,7 +36,7 @@ def scrape_onlinekhabar():
                 # Extracting details from the article page
                 original_title = article_soup.find('h1').text.strip() if article_soup.find('h1') else print("entry_title not found" + article_link)
                 
-                original_content = article_soup.find('div', class_='ok18-single-post-content-wrap').text.strip() if article_soup.find('div', class_='ok18-single-post-content-wrap') else print("original content not found"+ article_link)
+                original_content = "\n".join([para.get_text(strip=True) for para in article_soup.find('div', class_='ok18-single-post-content-wrap').find_all('p')]) if article_soup.find('div', class_='ok18-single-post-content-wrap') else print(f"Original content not found for {article_link}")
                 
                 # Extracting the image or iframe source safely
                 image_div = article_soup.find('div', class_='post-thumbnail')
