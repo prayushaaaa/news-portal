@@ -8,10 +8,11 @@ def scrape_onlinekhabar():
     
     # Categories with corresponding URLs
     urls = {
+        "local":"business/market",
         "national": "news/rastiya", 
         "entertainment": "entertainment/ent-news", 
         "technology": "technology-news", 
-        "business": "business/business-feature"
+        "business": "business/business-feature",    
     }
     
     articles = []

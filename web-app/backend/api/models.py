@@ -164,3 +164,23 @@ class Notification(models.Model):
             return f"{self.type} - {self.post.title}"
         else:
             return "Notification"
+        
+# web-app/backend/api/models.py
+from django.db import models
+
+class NewsArticle(models.Model):
+    source = models.CharField(max_length=255)
+    category = models.CharField(max_length=100)
+    link = models.URLField()
+    nep_timestamp = models.CharField(max_length=50, null=True, blank=True)
+    en_timestamp = models.CharField(max_length=50,null=True, blank=True)
+    original_title = models.CharField(max_length=255)
+    translated_title = models.CharField(max_length=255)
+    original_content = models.TextField()
+    translated_content = models.TextField()
+    image_source = models.URLField(null=True, blank=True)
+    sentiment_score = models.FloatField(null=True, blank=True)
+    # source,category,link,nep_timestamp,en_timestamp,original_title,translated_title,original_content,translated_content,image_source
+
+    def __str__(self):
+        return self.translated_title or self.original_title
