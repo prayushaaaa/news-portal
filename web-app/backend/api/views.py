@@ -142,11 +142,11 @@ class PostListAPIView(generics.ListAPIView):
         return api_models.Post.objects.filter(status="Active").order_by("date")
 
 class NewsArticleListAPIView(generics.ListAPIView):
-    serializer_class = api_serializer.PostSerializer
+    serializer_class = api_serializer.NewsArticleSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        return api_models.NewsArticle.objects.all().order_by("date")
+        return api_models.NewsArticle.objects.all().order_by("-en_timestamp")
     
 class PostDetailAPIView(generics.RetrieveAPIView):
     serializer_class = api_serializer.PostSerializer
@@ -229,13 +229,6 @@ class LikeNewsArticleAPIView(APIView):
         else:
             # If post hasn't been liked, like the post by adding user to set of poeple who have liked the post
             news_article.likes.add(user)
-            
-            # Create Notification for Author
-            api_models.Notification.objects.create(
-                user=news_article.user,
-                post=news_article,
-                type="Like",
-            )
             return Response({"message": "Post Liked"}, status=status.HTTP_201_CREATED)
       
 class PostCommentAPIView(APIView):
@@ -363,31 +356,34 @@ class BookmarkNewsArticleAPIView(APIView):
         news_article_id = request.data['news_article_id']
 
         user = api_models.User.objects.get(id=user_id)
-        news_article = api_models.Post.objects.get(id=news_article_id)
+        news_article = api_models.NewsArticle.objects.get(id=news_article_id)
 
         bookmark = api_models.NewsArticleBookmark.objects.filter(news_article=news_article, user=user).first()
         if bookmark:
             bookmark.delete()
             return Response({"message": "Bookmark removed"}, status=status.HTTP_200_OK)
         else:
-            api_models.Bookmark.objects.create(
+            api_models.NewsArticleBookmark.objects.create(
                 user=user,
                 news_article=news_article
             )
             return Response({"message": "Post Bookmarked"}, status=status.HTTP_201_CREATED)
 
-class UserBookmarksApiView(generics.ListAPIView):
-    serializer_class = api_serializer.AuthorStats
+class UserBookmarkView(generics.ListAPIView):
+    serializer_class = api_serializer.UserBookmarkViewSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
         user_id = self.kwargs['user_id']
         user = api_models.User.objects.get(id=user_id)
 
-        post_bookmarks = api_models.Bookmark.objects.get(user=user)
-        news_article_bookmarks = api_models.NewsArticleBookmark.objects.get(user=user)
+        post_bookmarks = api_models.Bookmark.objects.filter(user=user)
+        news_article_bookmarks = api_models.NewsArticleBookmark.objects.filter(user=user)
 
-        return post_bookmarks + news_article_bookmarks
+        return [{
+            "post_bookmarks":post_bookmarks,
+            "news_article_bookmarks":news_article_bookmarks
+        }]
     
     def list(self, request, *args, **kwargs):
         querset = self.get_queryset()

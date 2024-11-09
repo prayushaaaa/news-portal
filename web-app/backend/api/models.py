@@ -173,7 +173,7 @@ class NewsArticle(models.Model):
     category = models.CharField(max_length=100)
     link = models.URLField()
     nep_timestamp = models.CharField(max_length=50, null=True, blank=True)
-    en_timestamp = models.CharField(max_length=50,null=True, blank=True)
+    en_timestamp = models.DateTimeField(max_length=50,null=True, blank=True)
     original_title = models.CharField(max_length=255)
     translated_title = models.CharField(max_length=255)
     original_content = models.TextField()
@@ -186,6 +186,9 @@ class NewsArticle(models.Model):
 
     def __str__(self):
         return self.translated_title or self.original_title
+    
+    def news_article_comments(self):
+        return NewsArticleComment.objects.filter(news_article=self).order_by("-id")
     
 class NewsArticleBookmark(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

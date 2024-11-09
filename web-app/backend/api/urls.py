@@ -38,6 +38,6 @@ urlpatterns = [
     path('news-article/comment-article/', api_views.NewsArticleCommentAPIView.as_view()),
     
     #get all bookmarks of a user
-    path('all-bookmarks/', api_views.UserBookmarksApiView.as_view()),
+    path('all-bookmarks/<user_id>/', api_views.UserBookmarkView.as_view()),
 
 ]

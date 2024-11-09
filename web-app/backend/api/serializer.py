@@ -216,3 +216,7 @@ class AuthorStats(serializers.Serializer):
     posts = serializers.IntegerField(default=0)
     likes = serializers.IntegerField(default=0)
     bookmarks = serializers.IntegerField(default=0)
+  
+class UserBookmarkViewSerializer(serializers.Serializer):
+    news_article_bookmarks = NewsArticleBookmarkSerializer(many=True)
+    post_bookmarks = BookmarkSerializer(many=True)
