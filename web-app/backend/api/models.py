@@ -179,8 +179,34 @@ class NewsArticle(models.Model):
     original_content = models.TextField()
     translated_content = models.TextField()
     image_source = models.URLField(null=True, blank=True)
-    sentiment_score = models.FloatField(null=True, blank=True)
+    sentiment_score = models.IntegerField(null=True, blank=True)
+    view = models.IntegerField(default=0)
+    likes = models.ManyToManyField(User, blank=True, related_name="newsArticleLikes_user")
     # source,category,link,nep_timestamp,en_timestamp,original_title,translated_title,original_content,translated_content,image_source
 
     def __str__(self):
         return self.translated_title or self.original_title
+    
+class NewsArticleBookmark(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    news_article = models.ForeignKey(NewsArticle, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.news_article.translated_title} - {self.user.username}"
+    
+    class Meta:
+        verbose_name_plural = "NewsArticleBookmark"
+
+class NewsArticleComment(models.Model):
+    news_article = models.ForeignKey(NewsArticle, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    comment = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.news_article.translated_title} - {self.name}"
+    
+    class Meta:
+        verbose_name_plural = "NewsArticleComment"

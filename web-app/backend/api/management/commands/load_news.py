@@ -41,7 +41,7 @@ class Command(BaseCommand):
                     original_content = row['original_content']
                     translated_content = row['translated_content']
                     image_source = row['image_source']
-                    sentiment_score = None  # Optional; set a value here if available in CSV or calculated elsewhere
+                    sentiment_score = row['sentiment_score']
 
                     # Save article to the database
                     NewsArticle.objects.create(
