@@ -146,7 +146,7 @@ class NewsArticleListAPIView(generics.ListAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        return api_models.Post.objects.all().order_by("date")
+        return api_models.NewsArticle.objects.all().order_by("date")
     
 class PostDetailAPIView(generics.RetrieveAPIView):
     serializer_class = api_serializer.PostSerializer
