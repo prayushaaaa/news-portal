@@ -140,6 +140,13 @@ class PostListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         return api_models.Post.objects.filter(status="Active").order_by("date")
+
+class NewsArticleListAPIView(generics.ListAPIView):
+    serializer_class = api_serializer.PostSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        return api_models.Post.objects.all().order_by("date")
     
 class PostDetailAPIView(generics.RetrieveAPIView):
     serializer_class = api_serializer.PostSerializer
@@ -151,6 +158,17 @@ class PostDetailAPIView(generics.RetrieveAPIView):
         post.view += 1
         post.save()
         return post
+    
+class NewsArticleDetailAPIView(generics.RetrieveAPIView):
+    serializer_class = api_serializer.NewsArticleSerializer
+    permission_classes = [AllowAny]
+
+    def get_object(self):
+        news_article_id = self.kwargs['news_article_id']
+        news_article = api_models.NewsArticle.objects.get(id=news_article_id)
+        news_article.view += 1
+        news_article.save()
+        return news_article
         
 class LikePostAPIView(APIView):
     @swagger_auto_schema(
@@ -173,7 +191,7 @@ class LikePostAPIView(APIView):
         if user in post.likes.all():
             # If liked, unlike post
             post.likes.remove(user)
-            return Response({"message": "Post Disliked"}, status=status.HTTP_200_OK)
+            return Response({"message": "Removed Like"}, status=status.HTTP_200_OK)
         else:
             # If post hasn't been liked, like the post by adding user to set of poeple who have liked the post
             post.likes.add(user)
@@ -185,7 +203,41 @@ class LikePostAPIView(APIView):
                 type="Like",
             )
             return Response({"message": "Post Liked"}, status=status.HTTP_201_CREATED)
-        
+   
+class LikeNewsArticleAPIView(APIView):
+    @swagger_auto_schema(
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'user_id': openapi.Schema(type=openapi.TYPE_INTEGER),
+                'news_article_id': openapi.Schema(type=openapi.TYPE_STRING),
+            },
+        ),
+    )
+    def post(self, request):
+        user_id = request.data['user_id']
+        news_article_id = request.data['news_article_id']
+
+        user = api_models.User.objects.get(id=user_id)
+        news_article = api_models.NewsArticle.objects.get(id=news_article_id)
+
+        # Check if post has already been liked by this user
+        if user in  news_article.likes.all():
+            # If liked, unlike post
+            news_article.likes.remove(user)
+            return Response({"message": "Removed Like"}, status=status.HTTP_200_OK)
+        else:
+            # If post hasn't been liked, like the post by adding user to set of poeple who have liked the post
+            news_article.likes.add(user)
+            
+            # Create Notification for Author
+            api_models.Notification.objects.create(
+                user=news_article.user,
+                post=news_article,
+                type="Like",
+            )
+            return Response({"message": "Post Liked"}, status=status.HTTP_201_CREATED)
+      
 class PostCommentAPIView(APIView):
     @swagger_auto_schema(
         request_body=openapi.Schema(
@@ -224,7 +276,40 @@ class PostCommentAPIView(APIView):
 
         # Return response back to the frontend
         return Response({"message": "Commented Sent"}, status=status.HTTP_201_CREATED)
- 
+
+class NewsArticleCommentAPIView(APIView):
+    @swagger_auto_schema(
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'news_article_id': openapi.Schema(type=openapi.TYPE_INTEGER),
+                'name': openapi.Schema(type=openapi.TYPE_STRING),
+                'email': openapi.Schema(type=openapi.TYPE_STRING),
+                'comment': openapi.Schema(type=openapi.TYPE_STRING),
+            },
+        ),
+    )
+    def post(self, request):
+        # Get data from request.data (frontend)
+        news_article_id = request.data['news_article_id']
+        name = request.data['name']
+        email = request.data['email']
+        comment = request.data['comment']
+
+        news_article = api_models.NewsArticle.objects.get(id=news_article_id)
+
+        # Create Comment
+        api_models.NewsArticleComment.objects.create(
+            news_article=news_article,
+            name=name,
+            email=email,
+            comment=comment,
+        )
+
+        # Return response back to the frontend
+        return Response({"message": "Comment Sent"}, status=status.HTTP_201_CREATED)
+  
+
 class BookmarkPostAPIView(APIView):
     @swagger_auto_schema(
         request_body=openapi.Schema(
@@ -261,6 +346,54 @@ class BookmarkPostAPIView(APIView):
                 type="Bookmark",
             )
             return Response({"message": "Post Bookmarked"}, status=status.HTTP_201_CREATED)
+
+class BookmarkNewsArticleAPIView(APIView):
+    @swagger_auto_schema(
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'user_id': openapi.Schema(type=openapi.TYPE_INTEGER),
+                'news_article_id': openapi.Schema(type=openapi.TYPE_STRING),
+            },
+        ),
+    )
+    
+    def post(self, request):
+        user_id = request.data['user_id']
+        news_article_id = request.data['news_article_id']
+
+        user = api_models.User.objects.get(id=user_id)
+        news_article = api_models.Post.objects.get(id=news_article_id)
+
+        bookmark = api_models.NewsArticleBookmark.objects.filter(news_article=news_article, user=user).first()
+        if bookmark:
+            bookmark.delete()
+            return Response({"message": "Bookmark removed"}, status=status.HTTP_200_OK)
+        else:
+            api_models.Bookmark.objects.create(
+                user=user,
+                news_article=news_article
+            )
+            return Response({"message": "Post Bookmarked"}, status=status.HTTP_201_CREATED)
+
+class UserBookmarksApiView(generics.ListAPIView):
+    serializer_class = api_serializer.AuthorStats
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        user = api_models.User.objects.get(id=user_id)
+
+        post_bookmarks = api_models.Bookmark.objects.get(user=user)
+        news_article_bookmarks = api_models.NewsArticleBookmark.objects.get(user=user)
+
+        return post_bookmarks + news_article_bookmarks
+    
+    def list(self, request, *args, **kwargs):
+        querset = self.get_queryset()
+        serializer = self.get_serializer(querset, many=True)
+        return Response(serializer.data)
+
 
 
 ######################## Author Dashboard APIs ########################
@@ -348,9 +481,6 @@ class DashboardPostCommentAPIView(APIView):
     def post(self, request):
         comment_id = request.data['comment_id']
         reply = request.data['reply']
-
-        print("comment_id =======", comment_id)
-        print("reply ===========", reply)
 
         comment = api_models.Comment.objects.get(id=comment_id)
         comment.reply = reply

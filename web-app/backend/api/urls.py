@@ -29,6 +29,15 @@ urlpatterns = [
     path('author/dashboard/reply-comment/', api_views.DashboardPostCommentAPIView.as_view()),
     path('author/dashboard/post-create/', api_views.DashboardPostCreateAPIView.as_view()),
     path('author/dashboard/post-detail/<user_id>/<post_id>/', api_views.DashboardPostEditAPIView.as_view()),
-
+    
+    #news article APIs
+    path('news-article/lists/', api_views.NewsArticleListAPIView.as_view()),
+    path('news-article/detail/<news_article_id>/', api_views.NewsArticleDetailAPIView.as_view()),
+    path('news-article/like-article/', api_views.LikeNewsArticleAPIView.as_view()),
+    path('news-article/bookmark-news-article/', api_views.BookmarkNewsArticleAPIView.as_view()),
+    path('news-article/comment-article/', api_views.NewsArticleCommentAPIView.as_view()),
+    
+    #get all bookmarks of a user
+    path('all-bookmarks/', api_views.UserBookmarksApiView.as_view()),
 
 ]
