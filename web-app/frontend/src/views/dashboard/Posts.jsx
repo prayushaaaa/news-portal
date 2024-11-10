@@ -55,9 +55,8 @@ function Posts() {
 
     return (
         <>
-            <Header />
             <section className="py-4">
-                <div className="container">
+                <div className="">
                     <div className="row g-4">
                         <div className="col-12">
                             <div className="card border bg-transparent rounded-3">
@@ -125,13 +124,13 @@ function Posts() {
                                                 {posts?.map((p, index) => (
                                                     <tr key={index}>
                                                         <td>
-                                                            <Link to={`../${p.slug}/`}>
+                                                            <Link to={`../blog-detail/${p.slug}/`}>
                                                                 <img src={p.image} style={{ width: "100px", height: "100px", objectFit: "cover", borderRadius: "10px" }} alt="" />
                                                             </Link>
                                                         </td>
                                                         <td>
                                                             <h6 className="mt-2 mt-md-0 mb-0 ">
-                                                                <Link to={`../${p.slug}/`} className="text-dark text-decoration-none">
+                                                                <Link to={`../blog-detail/${p.slug}/`} className="text-dark text-decoration-none">
                                                                     {p?.title}
                                                                 </Link>
                                                             </h6>
@@ -169,7 +168,6 @@ function Posts() {
                     </div>
                 </div>
             </section>
-            <Footer />
         </>
     );
 }

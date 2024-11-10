@@ -110,19 +110,17 @@ function EditPost() {
                     <div className="row mt-0 mt-md-4">
                         <div className="col-lg-12 col-md-8 col-12">
                             <>
-                                <section className="py-4 py-lg-6 bg-primary rounded-3">
+                                <section className="py-4 py-lg-6 text-black rounded-3" style={{ border: "1px solid black", backgroundColor: "#f5cb5c" }}>
                                     <div className="container">
                                         <div className="row">
                                             <div className="offset-lg-1 col-lg-10 col-md-12 col-12">
                                                 <div className="d-lg-flex align-items-center justify-content-between">
                                                     <div className="mb-4 mb-lg-0">
-                                                        <h1 className="text-white mb-1">Update Blog Post</h1>
-                                                        <p className="mb-0 text-white lead">Use the article builder below to update your article.</p>
+                                                        <h1 className="mb-1">Update Blog Post</h1>
                                                     </div>
                                                     <div>
-                                                        <Link to="../posts/" className="btn" style={{ backgroundColor: "white" }}>
-                                                            {" "}
-                                                            <i className="fas fa-arrow-left"></i> Back to Posts
+                                                        <Link to="/dashboard" className="btn" style={{ border: "1px solid black" }}>
+                                                            <i className="fas fa-arrow-left"></i> Back to Dashboard
                                                         </Link>
                                                     </div>
                                                 </div>

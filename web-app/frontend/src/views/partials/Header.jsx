@@ -10,7 +10,7 @@ function Header() {
             <nav className="navbar navbar-expand-lg">
                 <div className="container">
                     <Link className="navbar-brand" to="/">
-                        <img className="navbar-brand-item dark-mode-item" src="https://i.postimg.cc/ZRNC1mhM/my-main-logo.png" style={{ width: "200px" }} alt="logo" />
+                        <img className="navbar-brand-item dark-mode-item" src="https://imgs.search.brave.com/80EgKEuzhehTd6cF_1ZFrDYCmLXjt7e_R-IHhk6LW_c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nYWxsLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxNi8w/Ni9FYXJ0aC1QTkct/SW1hZ2UucG5n" alt="News Portal" style={{ width: "50px", height: "50px" }} />
                     </Link>
                     <button className="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="h6 d-none d-sm-inline-block text-white">Menu</span>
@@ -28,7 +28,7 @@ function Header() {
                             </div>
                         </div>
                         <ul className="navbar-nav navbar-nav-scroll ms-auto">
-                            <li className="nav-item dropdown">
+                            <li className="nav-item dropdown active">
                                 <Link className="nav-link active" to="/">
                                     Home
                                 </Link>
@@ -38,84 +38,42 @@ function Header() {
                                     Category
                                 </Link>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle active" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="pagesMenu">
-                                    <li>
-                                        <Link className="dropdown-item" to="/about/">
-                                            <i className="bi bi-person-lines-fill"></i> About
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/contact/">
-                                            <i className="bi bi-telephone-fill"></i> Contact
-                                        </Link>
-                                    </li>
-                                </ul>
+                            <li className="nav-item dropdown active">
+                                <Link className="nav-link active" to="/dashboard">
+                                    User Dashboard
+                                </Link>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle active" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dashboard
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="pagesMenu">
-                                    <li>
-                                        <Link className="dropdown-item" to="/dashboard/">
-                                            <i className="fas fa-user"></i> Dashboard
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/posts/">
-                                            <i className="bi bi-grid-fill"></i> Posts
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/add-post/">
-                                            <i className="fas fa-plus-circle"></i> Add Post
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/comments/">
-                                            <i className="bi bi-chat-left-quote-fill"></i> Comments
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/notifications/">
-                                            <i className="fas fa-bell"></i> Notifications
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/profile/">
-                                            <i className="fas fa-user-gear"></i> Profile
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="nav-item">
-                                {isLoggedIn() ? (
-                                    <>
-                                        <Link to={"/dashboard/"} className="btn btn-success" href="dashboard.html">
+                            {isLoggedIn() ? (
+                                <>
+                                    <li className="nav-item dropdown active">
+                                        <Link to={"/dashboard/"} className="btn text-black" style={{ backgroundColor: "#f5cb5c" }} href="dashboard.html">
                                             Dashboard <i className="fas fa-home"></i>
                                         </Link>
-                                        <Link to={"/logout/"} className="btn btn-success ms-2" href="dashboard.html">
+                                    </li>
+                                    <li className="nav-item dropdown active">
+                                        <Link to={"/logout/"} className="btn ms-2 text-black" style={{ backgroundColor: "#f5cb5c" }} href="dashboard.html">
                                             Logout <i className="fas fa-sign-out-alt"></i>
                                         </Link>
-                                    </>
-                                ) : (
-                                    <>
-                                        <Link to={"/register/"} className="btn btn-success" href="dashboard.html">
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li className="nav-item dropdown active">
+                                        <Link to={"/register/"} className="btn text-black" style={{ backgroundColor: "#f5cb5c" }} href="dashboard.html">
                                             Register <i className="fas fa-user-plus"></i>
                                         </Link>
-                                        <Link to={"/login/"} className="btn btn-success ms-2" href="dashboard.html">
+                                    </li>
+                                    <li className="nav-item dropdown active">
+                                        <Link to={"/login/"} className="btn ms-2 text-black" style={{ backgroundColor: "#f5cb5c" }} href="dashboard.html">
                                             Login <i className="fas fa-sign-in-alt"></i>
                                         </Link>
-                                    </>
-                                )}
+                                    </li>
+                                </>
+                            )}
 
 
 
-                            </li>
+
                         </ul>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ function Login() {
             Toast("error", JSON.stringify(error));
             resetForm();
         } else {
-            navigate("/");
+            navigate(-2);
         }
 
         // Reset isLoading to false when the operation is complete

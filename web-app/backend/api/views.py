@@ -148,6 +148,26 @@ class NewsArticleListAPIView(generics.ListAPIView):
     def get_queryset(self):
         return api_models.NewsArticle.objects.all().order_by("-en_timestamp")
     
+class NewsArticleByViewsAPIView(generics.ListAPIView):
+    serializer_class = api_serializer.NewsArticleSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        return api_models.NewsArticle.objects.all().order_by("-view")[:30]
+    
+class PostByViewsAPIView(generics.ListAPIView):
+    serializer_class = api_serializer.PostSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        return api_models.Post.objects.all().order_by("-view")[:30]
+    
+class NewsArticleByLikesAPIView(generics.ListAPIView):
+    serializer_class = api_serializer.NewsArticleSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        return api_models.NewsArticle.objects.all().order_by("-likes")[:30]
 class PostDetailAPIView(generics.RetrieveAPIView):
     serializer_class = api_serializer.PostSerializer
     permission_classes = [AllowAny]

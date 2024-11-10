@@ -7,6 +7,11 @@ import apiInstance from "../../utils/axios";
 import useUserData from "../../plugin/useUserData";
 import moment from "moment";
 import Toast from "../../plugin/Toast";
+import Posts from "./Posts";
+import UserProfile from "./UserProfile";
+
+import { useAuthStore } from "../../store/auth";
+import NotLoggedIn from "./NotLoggedIn";
 
 function Dashboard() {
     const [stats, setStats] = useState([]);
@@ -15,6 +20,7 @@ function Dashboard() {
     const [noti, setNoti] = useState([]);
 
     const userId = useUserData()?.user_id;
+    const [isLoggedIn, user] = useAuthStore((state) => [state.isLoggedIn, state.user]);
 
     const fetchDashboardData = async () => {
         const stats_res = await apiInstance.get(`author/dashboard/stats/${userId}/`);
@@ -36,7 +42,6 @@ function Dashboard() {
 
     const handleMarkNotiAsSeen = async (notiId) => {
         const response = await apiInstance.post("author/dashboard/noti-mark-seen/", { noti_id: notiId });
-        console.log(response.data);
         fetchDashboardData();
         Toast("success", "Notification Seen", "");
     };
@@ -44,7 +49,8 @@ function Dashboard() {
     return (
         <>
             <Header />
-            <section className="py-4">
+            {isLoggedIn() && <section className="pb-4">
+                <UserProfile />
                 <div className="container">
                     <div className="row g-4">
                         <div className="col-12">
@@ -122,7 +128,7 @@ function Dashboard() {
                                                     <div className="d-flex position-relative">
                                                         <img className="w-60 rounded" src={p.image} style={{ width: "100px", height: "110px", objectFit: "cover", borderRadius: "10px" }} alt="product" />
                                                         <div className="ms-3">
-                                                            <Link to={`../${p.slug}`} className="h6 stretched-link text-decoration-none text-dark">
+                                                            <Link to={`../blog-detail/${p.slug}`} className="h6 stretched-link text-decoration-none text-dark">
                                                                 {p.title}
                                                             </Link>
                                                             <p className="small mb-0 mt-3">
@@ -212,6 +218,7 @@ function Dashboard() {
                                 <div className="card-body p-3">
                                     <div className="custom-scrollbar h-350">
                                         <div className="row">
+                                            {noti?.length === 0 && <p>No notifications.</p>}
                                             {noti?.slice(0, 3)?.map((n, index) => (
                                                 <>
                                                     <div className="col-12">
@@ -261,90 +268,12 @@ function Dashboard() {
                                 </div>
                             </div>
                         </div>
-
-                        <div className="col-12">
-                            <div className="card border bg-transparent rounded-3">
-                                <div className="card-header bg-transparent border-bottom p-3">
-                                    <div className="d-sm-flex justify-content-between align-items-center">
-                                        <h5 className="mb-2 mb-sm-0">
-                                            All Blog Posts <span className="badge bg-primary bg-opacity-10 text-primary">{posts?.length}</span>
-                                        </h5>
-                                        <a href="#" className="btn btn-sm btn-primary mb-0">
-                                            Add New <i className="fas fa-plus"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="card-body">
-                                    {/* Search and select END */}
-                                    {/* Blog list table START */}
-                                    <div className="table-responsive border-0">
-                                        <table className="table align-middle p-4 mb-0 table-hover table-shrink">
-                                            {/* Table head */}
-                                            <thead className="table-dark">
-                                                <tr>
-                                                    <th scope="col" className="border-0 rounded-start">
-                                                        Article Name
-                                                    </th>
-                                                    <th scope="col" className="border-0">
-                                                        Views
-                                                    </th>
-                                                    <th scope="col" className="border-0">
-                                                        Published Date
-                                                    </th>
-                                                    <th scope="col" className="border-0">
-                                                        Category
-                                                    </th>
-                                                    <th scope="col" className="border-0">
-                                                        Status
-                                                    </th>
-                                                    <th scope="col" className="border-0 rounded-end">
-                                                        Action
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody className="border-top-0">
-                                                {posts?.map((p, index) => (
-                                                    <tr>
-                                                        <td>
-                                                            <h6 className="mt-2 mt-md-0 mb-0 ">
-                                                                <a href="#" className="text-dark text-decoration-none">
-                                                                    {p?.title}
-                                                                </a>
-                                                            </h6>
-                                                        </td>
-                                                        <td>
-                                                            <h6 className="mb-0">
-                                                                <a href="#" className="text-dark text-decoration-none">
-                                                                    {p.view} Views
-                                                                </a>
-                                                            </h6>
-                                                        </td>
-                                                        <td>{moment(p.date).format("DD MMM, YYYY")}</td>
-                                                        <td>{p.category?.title}</td>
-                                                        <td>
-                                                            <span className="badge bg-dark bg-opacity-10 text-dark mb-2">{p.status}</span>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <a href="#" className="btn-round mb-0 btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                                    <i className="bi bi-trash" />
-                                                                </a>
-                                                                <a href="dashboard-post-edit.html" className="btn btn-primary btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                                                    <i className="bi bi-pencil-square" />
-                                                                </a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Posts />
                     </div>
                 </div>
-            </section>
+            </section>}
+            {!isLoggedIn() && <NotLoggedIn />}
+
             <Footer />
         </>
     );

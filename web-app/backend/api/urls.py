@@ -19,6 +19,8 @@ urlpatterns = [
     path('post/like-post/', api_views.LikePostAPIView.as_view()),
     path('post/comment-post/', api_views.PostCommentAPIView.as_view()),
     path('post/bookmark-post/', api_views.BookmarkPostAPIView.as_view()),
+    path('post/list-by-views/', api_views.PostByViewsAPIView.as_view()),
+    
 
     # Dashboard APIS
     path('author/dashboard/stats/<user_id>/', api_views.DashboardStats.as_view()),
@@ -32,6 +34,8 @@ urlpatterns = [
     
     #news article APIs
     path('news-article/lists/', api_views.NewsArticleListAPIView.as_view()),
+    path('news-article/list-by-likes/', api_views.NewsArticleByLikesAPIView.as_view()),
+    path('news-article/list-by-views/', api_views.NewsArticleByViewsAPIView.as_view()),
     path('news-article/detail/<news_article_id>/', api_views.NewsArticleDetailAPIView.as_view()),
     path('news-article/like-article/', api_views.LikeNewsArticleAPIView.as_view()),
     path('news-article/bookmark-news-article/', api_views.BookmarkNewsArticleAPIView.as_view()),

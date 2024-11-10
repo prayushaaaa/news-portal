@@ -16,8 +16,9 @@ import AddPost from "./views/dashboard/AddPost";
 import EditPost from "./views/dashboard/EditPost";
 import Comments from "./views/dashboard/Comments";
 import Notifications from "./views/dashboard/Notifications";
-import Profile from "./views/dashboard/Profile";
+import EditProfile from "./views/dashboard/EditProfile";
 import MainWrapper from "../src/layouts/MainWrapper";
+import ViewBookmarks from "./views/dashboard/ViewBookmarks";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
         <MainWrapper>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/:slug/" element={<Detail />} />
+            <Route path="/blog-detail/:slug/" element={<Detail />} />
+            {/* <Route path="/news-detail/:id/" element={<Detail />} /> // needs work */}
             <Route path="/category/:slug/" element={<Category />} />
             <Route path="/search/" element={<Search />} />
 
@@ -44,7 +46,9 @@ function App() {
             <Route path="/edit-post/:id/" element={<EditPost />} />
             <Route path="/comments/" element={<Comments />} />
             <Route path="/notifications/" element={<Notifications />} />
-            <Route path="/profile/" element={<Profile />} />
+            <Route path="/edit-profile/" element={<EditProfile />} />
+            <Route path="/view-bookmarks/:userId" element={<ViewBookmarks />} />
+
 
             {/* Pages */}
             <Route path="/about/" element={<About />} />
