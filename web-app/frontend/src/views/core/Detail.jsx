@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import apiInstance from "../../utils/axios";
 import Moment from "../../plugin/Moment";
 import Toast from "../../plugin/Toast";
+import useUserData from "../../plugin/useUserData";
 
 function Detail() {
     const [post, setPost] = useState([]);
@@ -56,7 +57,7 @@ function Detail() {
 
     const handleLikePost = async () => {
         const json = {
-            user_id: 2,
+            user_id: useUserData()?.user_id,
             post_id: post.id,
         };
         const response = await apiInstance.post(`post/like-post/`, json);

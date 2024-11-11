@@ -220,3 +220,7 @@ class AuthorStats(serializers.Serializer):
 class UserBookmarkViewSerializer(serializers.Serializer):
     news_article_bookmarks = NewsArticleBookmarkSerializer(many=True)
     post_bookmarks = BookmarkSerializer(many=True)
+    
+class GetAllByCategorySerializer(serializers.Serializer):
+    news_articles = NewsArticleSerializer(many=True)
+    posts = PostSerializer(many=True)

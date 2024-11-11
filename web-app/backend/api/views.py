@@ -126,13 +126,21 @@ class CategoryListAPIView(generics.ListAPIView):
         return api_models.Category.objects.all()
 
 class PostCategoryListAPIView(generics.ListAPIView):
-    serializer_class = api_serializer.PostSerializer
+    serializer_class = api_serializer.GetAllByCategorySerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        category_slug = self.kwargs['category_slug'] 
-        category = api_models.Category.objects.get(slug=category_slug)
-        return api_models.Post.objects.filter(category=category, status="Active")
+        category_param = self.kwargs['category'] 
+        
+        category = api_models.Category.objects.get(slug=category_param)
+        
+        posts = api_models.Post.objects.filter(category=category, status="Active")
+        news_articles = api_models.NewsArticle.objects.filter(category=category_param)
+        
+        return [{
+            "news_articles": news_articles,
+            "posts":posts if posts else ""
+        }]
 
 class PostListAPIView(generics.ListAPIView):
     serializer_class = api_serializer.PostSerializer

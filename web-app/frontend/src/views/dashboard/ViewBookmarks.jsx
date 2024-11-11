@@ -15,7 +15,6 @@ const ViewBookmarks = () => {
         try {
             const response = await apiInstance.get(`all-bookmarks/${userId}/`);
             setBookmarks(response.data[0]); // Save response to state
-            console.log(response.data[0]); // Debugging: Check the structure of response data
         } catch (error) {
             console.error("Error fetching bookmarks:", error);
         }

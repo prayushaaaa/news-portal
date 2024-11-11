@@ -19,35 +19,50 @@ function Header() {
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <div className="nav mt-3 mt-lg-0 px-4 flex-nowrap align-items-center">
                             <div className="nav-item w-100">
-                                <form className="rounded position-relative">
+                                {/* <form className="rounded position-relative">
                                     <input className="form-control pe-5 bg-light" type="search" placeholder="Search Articles" aria-label="Search" />
                                     <Link to={"/search/"} className="btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y" type="submit">
                                         <i className="bi bi-search fs-5"> </i>
                                     </Link>
-                                </form>
+                                </form> */}
                             </div>
                         </div>
-                        <ul className="navbar-nav navbar-nav-scroll ms-auto">
+                        <ul className="navbar-nav navbar-nav-scroll ms-auto gap-3">
                             <li className="nav-item dropdown active">
                                 <Link className="nav-link active" to="/">
                                     Home
                                 </Link>
                             </li>
                             <li className="nav-item dropdown">
-                                <Link className="nav-link active" to="/category/">
-                                    Category
+                                <Link className="nav-link active" to="/category/national">
+                                    National
                                 </Link>
                             </li>
-                            <li className="nav-item dropdown active">
-                                <Link className="nav-link active" to="/dashboard">
-                                    User Dashboard
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link active" to="/category/local">
+                                    Local
+                                </Link>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link active" to="/category/business">
+                                    Business
+                                </Link>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link active" to="/category/technology">
+                                    Technology
+                                </Link>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link active" to="/category/entertainment">
+                                    Entertainment
                                 </Link>
                             </li>
                             {isLoggedIn() ? (
                                 <>
                                     <li className="nav-item dropdown active">
                                         <Link to={"/dashboard/"} className="btn text-black" style={{ backgroundColor: "#f5cb5c" }} href="dashboard.html">
-                                            Dashboard <i className="fas fa-home"></i>
+                                            Dashboard <i className="fas fa-user"></i>
                                         </Link>
                                     </li>
                                     <li className="nav-item dropdown active">

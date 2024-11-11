@@ -19,6 +19,7 @@ import Notifications from "./views/dashboard/Notifications";
 import EditProfile from "./views/dashboard/EditProfile";
 import MainWrapper from "../src/layouts/MainWrapper";
 import ViewBookmarks from "./views/dashboard/ViewBookmarks";
+import NewsDetail from "./views/core/NewsDetail";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/blog-detail/:slug/" element={<Detail />} />
             {/* <Route path="/news-detail/:id/" element={<Detail />} /> // needs work */}
-            <Route path="/category/:slug/" element={<Category />} />
+            <Route path="/category/:category/" element={<Category />} />
             <Route path="/search/" element={<Search />} />
 
             {/* Authentication */}
@@ -53,6 +54,8 @@ function App() {
             {/* Pages */}
             <Route path="/about/" element={<About />} />
             <Route path="/contact/" element={<Contact />} />
+
+            <Route path="/news-detail/:news_article_id" element={<NewsDetail />} />
           </Routes>
         </MainWrapper>
       </BrowserRouter>
