@@ -148,6 +148,14 @@ class PostListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         return api_models.Post.objects.filter(status="Active").order_by("date")
+    
+class DeletePostAPIView(generics.DestroyAPIView):
+    permission_classes = [AllowAny]
+    
+    def delete(self, request, *args, **kwargs):
+        post_id = self.kwargs["post_id"]
+        result = api_models.Post.objects.filter(id=post_id).delete()
+        return Response('Post deleted!', status=status.HTTP_200_OK)
 
 class NewsArticleListAPIView(generics.ListAPIView):
     serializer_class = api_serializer.NewsArticleSerializer
@@ -517,7 +525,6 @@ class DashboardPostCreateAPIView(generics.CreateAPIView):
     permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
-        print(request.data)
         user_id = request.data.get('user_id')
         title = request.data.get('title')
         image = request.data.get('image')

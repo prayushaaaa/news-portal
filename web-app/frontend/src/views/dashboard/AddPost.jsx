@@ -61,6 +61,8 @@ function AddPost() {
 
         const formdata = new FormData();
 
+        console.log(userId)
+
         formdata.append("user_id", userId);
         formdata.append("title", post.title);
         formdata.append("image", post.image.file);
@@ -79,7 +81,7 @@ function AddPost() {
                 icon: "success",
                 title: "Post created successfully.",
             });
-            navigate("/posts/");
+            navigate("/dashboard/");
         } catch (error) {
             console.log(error);
             setIsLoading(false);
@@ -112,7 +114,7 @@ function AddPost() {
                                         </div>
                                     </div>
                                 </section>
-                                <form onSubmit={handleCreatePost} className="pb-8 mt-5">
+                                <form onSubmit={handleCreatePost} method="POST" className="pb-8 mt-5">
                                     <div className="card mb-3">
                                         {/* Basic Info Section */}
                                         <div className="card-header border-bottom px-4 py-3">

@@ -20,6 +20,7 @@ urlpatterns = [
     path('post/comment-post/', api_views.PostCommentAPIView.as_view()),
     path('post/bookmark-post/', api_views.BookmarkPostAPIView.as_view()),
     path('post/list-by-views/', api_views.PostByViewsAPIView.as_view()),
+    path('post/delete/<post_id>/', api_views.DeletePostAPIView.as_view()),
     
 
     # Dashboard APIS

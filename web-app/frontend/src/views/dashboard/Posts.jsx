@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import apiInstance from "../../utils/axios";
 import useUserData from "../../plugin/useUserData";
 import moment from "moment";
+import Toast from "../../plugin/Toast"
 
 function Posts() {
     const [posts, setPosts] = useState([]);
@@ -49,8 +50,9 @@ function Posts() {
         setPosts(sortedPosts);
     };
 
-    const handleDeletePost = (postId) => {
-        //TODO
+    const handleDeletePost = async (post_id) => {
+        const response = await apiInstance.delete(`post/delete/${post_id}/`);
+        Toast("success", "Post deleted.")
     }
 
     return (
@@ -152,7 +154,7 @@ function Posts() {
                                                                 <Link to={`/edit-post/${p.id}/`} className="btn btn-primary btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                                                                     <i className="bi bi-pencil-square" />
                                                                 </Link>
-                                                                <button onClick={handleDeletePost(p.id)} className="btn-round mb-0 btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                                                <button onClick={() => handleDeletePost(p.id)} className="btn-round mb-0 btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                                                                     <i className="bi bi-trash" />
                                                                 </button>
                                                             </div>
