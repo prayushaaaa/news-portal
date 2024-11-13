@@ -153,6 +153,61 @@ function Category() {
                 </div>
             </section>
 
+            <section className="p-0">
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <h2 className="text-start d-block mt-4">
+                                <i className="bi bi-grid-fill"></i> {category.charAt(0).toUpperCase() + String(category).slice(1)} Blogs
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="pt-2 pb-0">
+                <div className="container">
+                    <div className="row">
+                        {articles?.posts?.length === 0 && <p className="my-5">No blogs yet.</p>}
+                        {articles?.posts?.map((article, index) => (
+                            <div className="col-sm-6 col-lg-3"
+                                key={index}                            >
+                                <div className="card mb-4">
+                                    <div className="card-fold position-relative">
+                                        <img
+                                            className="card-img"
+                                            style={{ width: "100%", height: "160px", objectFit: "cover" }}
+                                            src={article.image}
+                                            alt="Card image"
+                                        />
+                                    </div>
+                                    <div className="card-body px-3 pt-3">
+                                        <h4 className="card-title">
+                                            <Link to={`/news-detail/${article.id}`} className="btn-link text-reset stretched-link fw-bold text-decoration-none">
+                                                {article.title}
+                                            </Link>
+                                        </h4>
+                                        <ul className="mt-3 list-style-none" style={{ listStyle: "none" }}>
+                                            <li className="mt-2">
+                                                <i className="fas fa-calendar"></i> {Moment(article.time)}
+                                            </li>
+                                            <li className="mt-2">
+                                                <i className="fas fa-eye"></i> {article.view} Views
+                                            </li>
+                                            <li>
+                                                <button className="text-dark text-decoration-none mt-2">
+                                                    <i className="fas fa-read"></i> Read More
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <Footer />
         </div>
     );

@@ -149,7 +149,8 @@ function Detail() {
                         {/* Left sidebar END */}
                         {/* Main Content START */}
                         <div className="col-lg-10 mb-5">
-                            <p>
+                            <img src={post.image} width={"100%"} height={"700px"} className="p-4" />
+                            <p className="my-3">
                                 {post.description}
                             </p>
 
