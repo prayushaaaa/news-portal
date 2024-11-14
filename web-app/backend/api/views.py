@@ -21,6 +21,8 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from datetime import datetime
 
+import api.sentiment_analysis as sentiment_analyzer
+
 # Others
 import json
 import random
@@ -90,6 +92,19 @@ class PasswordEmailVerify(generics.RetrieveAPIView):
             msg.attach_alternative(html_body, "text/html")
             msg.send()
         return user
+    
+class SentimentScorer(generics.ListAPIView):
+    def update(self, request, *args, **kwargs):
+        post_instance = self.get_object()
+
+        news_id = request.data.get('news_id')
+
+        news = api_models.NewsArticle.objects.get(id=news_id)
+
+        news.sentiment_score = sentiment_analyzer.predict_sentiment(news.translated_content)
+        post_instance.save()
+
+        return Response({"message": "Post Updated Successfully"}, status=status.HTTP_200_OK)
     
 
 class PasswordChangeView(generics.CreateAPIView):

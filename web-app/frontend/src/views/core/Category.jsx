@@ -183,7 +183,7 @@ function Category() {
                                     </div>
                                     <div className="card-body px-3 pt-3">
                                         <h4 className="card-title">
-                                            <Link to={`/news-detail/${article.id}`} className="btn-link text-reset stretched-link fw-bold text-decoration-none">
+                                            <Link to={`/blog-detail/${article.slug}`} className="btn-link text-reset stretched-link fw-bold text-decoration-none">
                                                 {article.title}
                                             </Link>
                                         </h4>

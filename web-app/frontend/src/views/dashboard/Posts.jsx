@@ -123,6 +123,9 @@ function Posts() {
                                                 </tr>
                                             </thead>
                                             <tbody className="border-top-0">
+                                                {posts.length === 0 && (
+                                                    <p>No posts yet.</p>
+                                                )}
                                                 {posts?.map((p, index) => (
                                                     <tr key={index}>
                                                         <td>

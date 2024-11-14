@@ -26,7 +26,7 @@ function Logout() {
                                         <Link to="/login/" className="btn btn-primary me-2 w-100">
                                             Login <i className="fas fa-sign-in-alt"></i>
                                         </Link>
-                                        <Link to="/register /" type="submit" className="btn btn-primary w-100">
+                                        <Link to="/register/" type="submit" className="btn btn-primary w-100">
                                             Register <i className="fas fa-user-plus"></i>
                                         </Link>
                                     </div>

@@ -34,7 +34,7 @@ function Register() {
         const { error } = register(bioData.full_name, bioData.email, bioData.password, bioData.password2);
 
         if (error) {
-            Toast("error", JSON.stringify(error));
+            Toast("error", "Unable to register");
             resetForm();
         } else {
             navigate('/');
@@ -87,7 +87,7 @@ function Register() {
                                         <label htmlFor="password" className="form-label">
                                             Confirm Password
                                         </label>
-                                        <input type="password" id="password" className="form-control" name="password2" placeholder="**************" onChange={handleChange} value={bioData.password2} required="" />
+                                        <input type="password" id="password2" className="form-control" name="password2" placeholder="**************" onChange={handleChange} value={bioData.password2} required="" />
                                     </div>
                                     <div>
                                         <div className="d-grid">

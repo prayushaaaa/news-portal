@@ -121,6 +121,9 @@ function Dashboard() {
                                     </div>
                                 </div>
                                 <div className="card-body p-3">
+                                    {posts.length === 0 && (
+                                        <p>No posts yet.</p>
+                                    )}
                                     <div className="row">
                                         {posts?.slice(0, 3)?.map((p, index) => (
                                             <>

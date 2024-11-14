@@ -67,7 +67,7 @@ function Detail() {
 
     const handleBookmarkPost = async () => {
         const json = {
-            user_id: 2,
+            user_id: useUserData()?.user_id,
             post_id: post.id,
         };
         const response = await apiInstance.post(`post/bookmark-post/`, json);
