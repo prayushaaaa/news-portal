@@ -605,12 +605,6 @@ class DashboardPostEditAPIView(generics.RetrieveUpdateDestroyAPIView):
 
         return Response({"message": "Post Updated Successfully"}, status=status.HTTP_200_OK)
 
-
-{
-    "title": "New post",
-    "image": "",
-    "description": "lorem",
-    "tags": "tags, here",
-    "category_id": 1,
-    "post_status": "Active"
-}
+class TopicTrendAPIView(generics.ListAPIView):
+    queryset = api_models.WordSentimentTrend.objects.all().order_by('time_period')
+    serializer_class = api_serializer.TopicTrendSerializer

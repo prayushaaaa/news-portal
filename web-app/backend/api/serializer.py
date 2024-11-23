@@ -224,3 +224,8 @@ class UserBookmarkViewSerializer(serializers.Serializer):
 class GetAllByCategorySerializer(serializers.Serializer):
     news_articles = NewsArticleSerializer(many=True)
     posts = PostSerializer(many=True)
+    
+class TopicTrendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = api_models.WordSentimentTrend
+        fields = ['word', 'time_period', 'sentiment_average', 'articles_count']

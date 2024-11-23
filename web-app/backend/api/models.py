@@ -213,3 +213,12 @@ class NewsArticleComment(models.Model):
     
     class Meta:
         verbose_name_plural = "NewsArticleComment"
+        
+class WordSentimentTrend(models.Model):
+    word = models.CharField(max_length=255)
+    time_period = models.DateField()
+    sentiment_average = models.FloatField()
+    articles_count = models.IntegerField()
+
+    class Meta:
+        unique_together = ('word', 'time_period')

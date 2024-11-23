@@ -44,5 +44,8 @@ urlpatterns = [
     
     #get all bookmarks of a user
     path('all-bookmarks/<user_id>/', api_views.UserBookmarkView.as_view()),
+    
+    #lda
+    path('topic-trends/', api_views.TopicTrendAPIView.as_view(), name='topic-trends'),
 
 ]
