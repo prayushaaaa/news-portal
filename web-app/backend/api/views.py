@@ -7,6 +7,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.db.models import Sum,Count
+from django.db.models import Q
 # Restframework
 from rest_framework import status
 from rest_framework.decorators import api_view, APIView
@@ -199,6 +200,7 @@ class NewsArticleByLikesAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         return api_models.NewsArticle.objects.all().order_by("-likes")[:30]
+
 class PostDetailAPIView(generics.RetrieveAPIView):
     serializer_class = api_serializer.PostSerializer
     permission_classes = [AllowAny]
@@ -440,7 +442,26 @@ class UserBookmarkView(generics.ListAPIView):
         querset = self.get_queryset()
         serializer = self.get_serializer(querset, many=True)
         return Response(serializer.data)
+    
 
+class WordSentimentTrendView(APIView):
+    def get(self, request, *args, **kwargs):
+        words = request.query_params.getlist('words')
+        if not words:
+            return Response({"error": "No words provided"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Build the Q object for case-insensitive matching
+        query = Q()
+        for word in words:
+            query |= Q(word__iexact=word)
+
+        queryset = api_models.WordSentimentTrend.objects.filter(word__in=words)
+
+        if not queryset.exists():
+            return Response({"message": "No data found for the provided words"}, status=status.HTTP_200_OK)
+
+        serializer_class = api_serializer.TopicTrendSerializer(queryset, many=True)
+        return Response(serializer_class.data, status=status.HTTP_200_OK)
 
 
 ######################## Author Dashboard APIs ########################

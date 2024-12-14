@@ -47,5 +47,6 @@ urlpatterns = [
     
     #lda
     path('topic-trends/', api_views.TopicTrendAPIView.as_view(), name='topic-trends'),
+    path('topic-trends-by-words/', api_views.WordSentimentTrendView.as_view())
 
 ]
