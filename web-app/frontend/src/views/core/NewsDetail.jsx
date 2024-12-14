@@ -22,6 +22,7 @@ function Detail() {
     const fetchData = async () => {
         const response = await apiInstance.get(`news-article/detail/${params.news_article_id}`);
         setPost(response.data);
+        console.log(response.data)
         setTags(response.data?.tags?.split(",") || []);
     };
 
@@ -78,6 +79,7 @@ function Detail() {
             email: createComment.email,
             comment: createComment.comment,
         };
+        console.log(json)
         await apiInstance.post(`news-article/comment-article/`, json);
         Toast("success", "Comment posted.");
         fetchData();
@@ -217,12 +219,11 @@ function Detail() {
                     </div>
                 </div>
             </section>
-                            <hr />
 
-                            {/* Comments Section */}
+            <hr />
                             <div>
-                                <h3>{post?.comments?.length || 0} comments</h3>
-                                {post?.comments?.map((c, index) => (
+                                <h3>{post?.news_article_comments?.length || 0} comments</h3>
+                                {post?.news_article_comments?.map((c, index) => (
                                     <div key={index} className="my-4 d-flex bg-light p-3 mb-3 rounded">
                                         <div>
                                             <div className="mb-2">
@@ -235,39 +236,50 @@ function Detail() {
                                 ))}
                             </div>
 
-                            {/* Comment Form */}
                             <div className="bg-light p-3 rounded">
                                 <h3 className="fw-bold">Leave a reply</h3>
-                                <form onSubmit={handleCommentSubmit}>
-                                    <input
-                                        type="text"
-                                        placeholder="Full Name *"
-                                        name="full_name"
-                                        value={createComment.full_name}
-                                        onChange={handleCommentChange}
-                                        required
-                                    />
-                                    <input
-                                        type="email"
-                                        placeholder="Email *"
-                                        name="email"
-                                        value={createComment.email}
-                                        onChange={handleCommentChange}
-                                        required
-                                    />
-                                    <textarea
-                                        placeholder="Comment *"
-                                        name="comment"
-                                        rows="3"
-                                        value={createComment.comment}
-                                        onChange={handleCommentChange}
-                                        required
-                                    />
-                                    <button type="submit" className="btn btn-primary mt-2">
-                                        Submit Comment
-                                    </button>
+                                <small>Your email address will not be published. Required fields are marked *</small>
+                                <form className="row g-3 mt-2" onSubmit={handleCommentSubmit}>
+                                    <div className="col-md-6">
+                                        <label className="form-label">Full Name *</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="full_name"
+                                            value={createComment.full_name}
+                                            onChange={handleCommentChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <label className="form-label">Email *</label>
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            name="email"
+                                            value={createComment.email}
+                                            onChange={handleCommentChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="col-12">
+                                        <label className="form-label">Comment *</label>
+                                        <textarea
+                                            className="form-control"
+                                            name="comment"
+                                            rows="3"
+                                            value={createComment.comment}
+                                            onChange={handleCommentChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="col-12">
+                                        <button type="submit" className="btn btn-primary">Submit Comment</button>
+                                    </div>
                                 </form>
                             </div>
+                        
+
                         </div>
                     </div>
                 </div>

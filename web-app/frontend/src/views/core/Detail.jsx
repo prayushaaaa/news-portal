@@ -154,6 +154,7 @@ function Detail() {
                                 {post.description}
                             </p>
                             {/* Main Content End*/}
+                            <hr/>
                             {/* Comments START */}
                             <div>
                                 <h3>{post?.comments?.length || 0} comments</h3>
@@ -174,8 +175,6 @@ function Detail() {
                                         </div>
                                     </div>
                                 ))}
-
-
                             </div>
                             {/* Comments END */}
                             {/* Reply START */}
