@@ -228,4 +228,4 @@ class GetAllByCategorySerializer(serializers.Serializer):
 class TopicTrendSerializer(serializers.ModelSerializer):
     class Meta:
         model = api_models.WordSentimentTrend
-        fields = ['word', 'time_period', 'sentiment_average', 'articles_count']
+        fields = ['word', 'date', 'sentiment_score', 'news_article']

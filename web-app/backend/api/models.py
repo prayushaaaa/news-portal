@@ -216,9 +216,10 @@ class NewsArticleComment(models.Model):
         
 class WordSentimentTrend(models.Model):
     word = models.CharField(max_length=255)
-    time_period = models.DateField()
-    sentiment_average = models.FloatField()
-    articles_count = models.IntegerField()
+    date = models.DateField()
+    sentiment_score = models.FloatField()
+    news_article = models.ForeignKey(NewsArticle, on_delete=models.CASCADE)
+
 
     class Meta:
-        unique_together = ('word', 'time_period')
+        verbose_name_plural = "WordSentimentTrend"

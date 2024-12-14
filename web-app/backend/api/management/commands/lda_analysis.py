@@ -1,86 +1,116 @@
+import re
 import pandas as pd
 from datetime import datetime
 from django.core.management.base import BaseCommand
 from api.models import NewsArticle, WordSentimentTrend
 from collections import defaultdict
-from gensim import corpora
-from gensim.models import LdaModel
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
+from nltk.corpus import stopwords
+from nltk import pos_tag, word_tokenize
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+
 
 class Command(BaseCommand):
-    help = "Track words and their sentiment scores over time using LDA to find key words"
+    WordSentimentTrend.objects.all().delete()
+    help = "Track words and their sentiment scores over time using Scikit-learn LDA to find key words."
 
     def handle(self, *args, **kwargs):
-        # Define a custom list of stop words to remove
-        stop_words = set([
+        # Define custom stop words
+        stop_words = set(stopwords.words('english')).union({
             "the", "of", "to", "in", "and", "is", "that", "a", "has", "was", "will", "be"
-        ])
+        })
 
-        # Fetch data
+        def clean_text(text):
+            """
+            Cleans input text by removing:
+            - HTML tags, punctuations, special characters, numbers
+            - Stopwords and verbs
+            """
+            # Remove HTML tags
+            text = re.sub(r"<.*?>", " ", text)
+            # Remove special characters, punctuations, and numbers
+            text = re.sub(r"[^a-zA-Z\s]", " ", text)
+            # Tokenize words
+            tokens = word_tokenize(text.lower())
+
+            # Remove stopwords
+            filtered_tokens = [word for word in tokens if word not in stop_words and len(word) > 2]
+            # Remove verbs (POS tagging: keep only nouns, adjectives, etc.)
+            filtered_tokens = [
+                word for word, tag in pos_tag(filtered_tokens)
+                if tag not in ("VB", "VBD", "VBG", "VBN", "VBP", "VBZ")  # Verb tags
+            ]
+            # Remove extra whitespace
+            return " ".join(filtered_tokens).strip()
+
+        # Fetch data from NewsArticle
         articles = NewsArticle.objects.all().values(
-            'id', 'translated_content', 'en_timestamp', 'sentiment_score'
+            'id', 'translated_title', 'en_timestamp', 'sentiment_score'
         )
 
         # Create a DataFrame
         df = pd.DataFrame(articles)
         df['en_timestamp'] = pd.to_datetime(df['en_timestamp']).dt.date
 
-        # Group articles by day
+        # Group articles by date
         grouped = df.groupby('en_timestamp')
 
-        # Initialize a dictionary to hold sentiment data for each word over time
+        # Dictionary to hold word sentiment data
         word_sentiment_data = defaultdict(lambda: defaultdict(list))
 
-        # Process each article and its words
-        all_texts = []  # Will hold all the tokenized content for LDA
+        # List to hold cleaned text for LDA
+        all_texts = []
 
         for date, group in grouped:
             for _, row in group.iterrows():
-                # Tokenize the content and filter out stop words
-                words = [word for word in row['translated_content'].split() if word.lower() not in stop_words]
+                # Clean the article title
+                cleaned_text = clean_text(row['translated_title'])
+                words = cleaned_text.split()
                 sentiment_score = row['sentiment_score']
-                
-                # For each word in the article, store its sentiment score for the date
+                article_id = row['id']
+
+                # Record sentiment for each word by date
                 for word in words:
-                    word_sentiment_data[word][date].append(sentiment_score)
+                    word_sentiment_data[word][date].append((sentiment_score, article_id))
 
-                # Add tokenized article to all_texts for LDA
-                all_texts.append(words)
+                # Add cleaned title to all_texts for LDA
+                all_texts.append(cleaned_text)
 
-        # Create a dictionary and corpus for LDA
-        dictionary = corpora.Dictionary(all_texts)
-        corpus = [dictionary.doc2bow(text) for text in all_texts]
+        # Vectorize text for LDA
+        vectorizer = CountVectorizer()
+        dtm = vectorizer.fit_transform(all_texts)
 
-        # Apply LDA to the corpus
-        lda_model = LdaModel(corpus, num_topics=5, id2word=dictionary, passes=15)
+        # Apply LDA
+        lda_model = LatentDirichletAllocation(n_components=5, max_iter=15, random_state=42)
+        lda_model.fit(dtm)
 
         # Extract top words for each topic
+        feature_names = vectorizer.get_feature_names_out()
         lda_keywords = {}
-        for topic_id in range(lda_model.num_topics):
-            top_words = lda_model.show_topic(topic_id, topn=10)  # Get top 10 words for each topic
-            lda_keywords[topic_id] = [word for word, _ in top_words]
+        for topic_idx, topic in enumerate(lda_model.components_):
+            top_word_indices = topic.argsort()[-10:][::-1]  # Top 10 words per topic
+            lda_keywords[topic_idx] = [feature_names[i] for i in top_word_indices]
 
-        # Calculate average sentiment for each word and save trends
-        count = 0
+        # Save word sentiment trends
         for word, sentiment_dict in word_sentiment_data.items():
             for date, sentiment_scores in sentiment_dict.items():
-                count += 1
-                print(count)
-                
-                avg_sentiment = sum(sentiment_scores) / len(sentiment_scores)
+                for sentiment_score, article_id in sentiment_scores:
+                    WordSentimentTrend.objects.create(
+                        word=word,
+                        date=date,
+                        sentiment_score=sentiment_score,
+                        news_article_id=article_id
+                    )
 
-                # Save to WordSentimentTrend (or similar model)
-                WordSentimentTrend.objects.update_or_create(
-                    word=word,
-                    time_period=date,
-                    defaults={
-                        "sentiment_average": avg_sentiment,
-                        "articles_count": len(sentiment_scores),
-                    }
-                )
-
-        # Print the top keywords for each topic
-        print("Top keywords for each topic based on LDA:")
+        # Display LDA topics
+        self.stdout.write("Top keywords for each topic:")
         for topic_id, words in lda_keywords.items():
-            print(f"Topic {topic_id}: {', '.join(words)}")
+            self.stdout.write(f"Topic {topic_id}: {', '.join(words)}")
 
-        self.stdout.write(self.style.SUCCESS("Word sentiment trends and key words from LDA successfully computed!"))
+        self.stdout.write(self.style.SUCCESS(
+            "Word sentiment trends and LDA keywords successfully computed!"
+        ))
