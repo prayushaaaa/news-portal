@@ -506,7 +506,7 @@ class DashboardCommentLists(generics.ListAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        return api_models.Comment.objects.all()
+        return api_models.Comment.objects.all().order_by("-date")
 
 class DashboardNotificationLists(generics.ListAPIView):
     serializer_class = api_serializer.NotificationSerializer

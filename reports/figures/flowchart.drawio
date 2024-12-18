@@ -1,0 +1,214 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.6">
+  <diagram name="Page-1" id="OMdw8reOUbJ4VwHTxZI7">
+    <mxGraphModel dx="2376" dy="1636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="crQv4GLzhFru-eY0uWEX-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c0-xx9rL5oKWM6l4He6U-1" target="c0-xx9rL5oKWM6l4He6U-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c0-xx9rL5oKWM6l4He6U-1" value="Start" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="178.75" y="-10" width="75" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c0-xx9rL5oKWM6l4He6U-2" value="End" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="182.82" y="560" width="63.75" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c0-xx9rL5oKWM6l4He6U-6" value="Extract news articles form different portals" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="641.88" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c0-xx9rL5oKWM6l4He6U-7" target="crQv4GLzhFru-eY0uWEX-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c0-xx9rL5oKWM6l4He6U-7" value="Translate from Nepali to English" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="480" y="95" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c0-xx9rL5oKWM6l4He6U-9" target="crQv4GLzhFru-eY0uWEX-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c0-xx9rL5oKWM6l4He6U-9" target="c0-xx9rL5oKWM6l4He6U-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c0-xx9rL5oKWM6l4He6U-9" value="Language&amp;nbsp;&lt;div&gt;is English?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="644.38" y="80" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c0-xx9rL5oKWM6l4He6U-13" target="crQv4GLzhFru-eY0uWEX-24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c0-xx9rL5oKWM6l4He6U-13" value="View classified news with translation&amp;nbsp;" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="163.75" y="80" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-1" target="c0-xx9rL5oKWM6l4He6U-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-1" value="Start" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="656.89" y="-102" width="75" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-2" target="ATGW-x-xza7V3MuaiKaP-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-2" value="Read CSV file" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-27.5;" parent="1" vertex="1">
+          <mxGeometry x="643.13" y="260" width="102.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-3" target="ATGW-x-xza7V3MuaiKaP-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-3" value="Use Potter Stemming Technique" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="641.26" y="395" width="106.25" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-4" target="ATGW-x-xza7V3MuaiKaP-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-4" value="Extract Features" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="642.5" y="480" width="105" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-5" target="ATGW-x-xza7V3MuaiKaP-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-5" value="Remove Stop words" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-27.5;" parent="1" vertex="1">
+          <mxGeometry x="645" y="330" width="102.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-6" target="ATGW-x-xza7V3MuaiKaP-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-6" value="Apply CNN for feature extraction" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="642.1899999999999" y="550" width="105.62" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-7" target="ATGW-x-xza7V3MuaiKaP-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-7" value="Apply SVM for article classification" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="645" y="630" width="103.75" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-8" target="ATGW-x-xza7V3MuaiKaP-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-8" value="Classify articles and extract entity using LDA" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="642.81" y="710" width="105.94" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-16" value="Visualize entity trends over time" style="html=1;dashed=0;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="643.75" y="790" width="105" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-19" value="End" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="664.37" y="860" width="63.75" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ATGW-x-xza7V3MuaiKaP-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="ATGW-x-xza7V3MuaiKaP-16" target="ATGW-x-xza7V3MuaiKaP-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="crQv4GLzhFru-eY0uWEX-2" target="ATGW-x-xza7V3MuaiKaP-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-2" value="Store in CSV file" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-27.5;" parent="1" vertex="1">
+          <mxGeometry x="643.1400000000001" y="190" width="102.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="c0-xx9rL5oKWM6l4He6U-6" target="c0-xx9rL5oKWM6l4He6U-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-7" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="688.12" y="150" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-10" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="616.89" y="95" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-11" value="View entity sentiment graph" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-27.5;" parent="1" vertex="1">
+          <mxGeometry x="164.69" y="245" width="102.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="crQv4GLzhFru-eY0uWEX-12" target="crQv4GLzhFru-eY0uWEX-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="crQv4GLzhFru-eY0uWEX-12" target="crQv4GLzhFru-eY0uWEX-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-12" value="Registered&amp;nbsp;&lt;div&gt;user?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="164.69" y="315" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="crQv4GLzhFru-eY0uWEX-14" target="crQv4GLzhFru-eY0uWEX-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-14" value="Sign Up" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-27.5;" parent="1" vertex="1">
+          <mxGeometry x="342.19" y="335" width="102.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="crQv4GLzhFru-eY0uWEX-15" target="crQv4GLzhFru-eY0uWEX-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-15" value="Login" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-27.5;" parent="1" vertex="1">
+          <mxGeometry x="163.44" y="425" width="102.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-16" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="212.19" y="395" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-17" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="257.19" y="325" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="crQv4GLzhFru-eY0uWEX-11" target="crQv4GLzhFru-eY0uWEX-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-23" value="Save news posts" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-27.5;" parent="1" vertex="1">
+          <mxGeometry x="162.19" y="495" width="105" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="crQv4GLzhFru-eY0uWEX-24" target="crQv4GLzhFru-eY0uWEX-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-24" value="Filter news based on entity and sentiment" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-27.5;" parent="1" vertex="1">
+          <mxGeometry x="162.19" y="160" width="108.12" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="crQv4GLzhFru-eY0uWEX-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="crQv4GLzhFru-eY0uWEX-23" target="c0-xx9rL5oKWM6l4He6U-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-1" value="&lt;b&gt;Data&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;b&gt;representation&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Transform text data&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;into numerical feature&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="137.19" y="640" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-2" value="&lt;b&gt;Hyperplane&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;b&gt;Calculation&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Find the hyperplane&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;that best&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;separates&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;the classes&lt;/span&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;with SVM&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="284.69" y="640" width="155.31" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-3" value="&lt;b&gt;Classification&lt;/b&gt;&lt;div&gt;Classify new data&amp;nbsp;&lt;/div&gt;&lt;div&gt;points&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;based on&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;which&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;side of the&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;hyperplane they fall on&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="430" y="640" width="155.31" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-9" value="&lt;div&gt;&lt;b&gt;TF Calculation&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Indicates&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;how often&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;a term appears&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;relative &lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;to the total number&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;of terms&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="-830" y="520" width="138.12" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-10" value="&lt;div&gt;&lt;b&gt;IDF Calculation&lt;/b&gt;&lt;br&gt;&lt;div&gt;Indicates how rare&lt;/div&gt;&lt;div&gt;a term is across&amp;nbsp;&lt;/div&gt;&lt;div&gt;the entire document&lt;/div&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="-702.5" y="520" width="138.12" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-11" value="&lt;b&gt;TF-IDF Score&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;b&gt;Calculation&lt;/b&gt;&lt;br&gt;&lt;div&gt;Represents the&amp;nbsp;&lt;/div&gt;&lt;div&gt;relative importance&amp;nbsp;&lt;/div&gt;&lt;div&gt;of&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;a term&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="-577.19" y="520" width="145.31" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-12" value="&lt;div&gt;&lt;b&gt;Feature Vector&amp;nbsp;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Numerical represen-&lt;/div&gt;&lt;div&gt;tations of documents&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;that capture the&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;importance of terms.&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="-445" y="520" width="155" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-13" value="&lt;p class=&quot;MsoListParagraph&quot; style=&quot;margin-left:36.7pt;mso-add-space:auto;&lt;br/&gt;text-indent:-36.7pt;mso-text-indent-alt:-.25in;mso-list:l0 level1 lfo1&quot;&gt;&lt;span style=&quot;mso-fareast-font-family:&amp;quot;Times New Roman&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;&quot;&gt;&lt;span style=&quot;mso-list:Ignore&quot;&gt;&lt;span style=&quot;font:7.0pt &amp;quot;Times New Roman&amp;quot;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font:7.0pt &amp;quot;Times New Roman&amp;quot;&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;Output Layer: Use a sigmoid activation function&lt;br&gt;to produce probability distributions for sentiment classes.&lt;/p&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="1100" width="380" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-15" value="&lt;div&gt;&lt;b&gt;Topic Assignment&lt;/b&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;Randomly assign&lt;/div&gt;&lt;div&gt;topic&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;for each&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;word in&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;the corpus.&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="-290" y="1070" width="138.12" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-16" value="&lt;div&gt;&lt;b&gt;Parameter&amp;nbsp;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Estimation&lt;/b&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;Iteratively update&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;the topic-word&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;and document-topic distributions&amp;nbsp;&lt;br&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="-162.5" y="1070" width="138.12" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-17" value="&lt;div&gt;&lt;b&gt;Topic Inference&lt;/b&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;After convergence,&amp;nbsp;&lt;/div&gt;&lt;div&gt;infer the dominant&amp;nbsp;&lt;/div&gt;&lt;div&gt;topics across&amp;nbsp;&lt;/div&gt;&lt;div&gt;documents.&lt;br&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="-37.19" y="1070" width="145.31" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-18" value="&lt;div&gt;&lt;b&gt;Time-Series Analysis&lt;/b&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;Analyze how topic&lt;/div&gt;&lt;div&gt;distribution change&lt;/div&gt;&lt;div&gt;over time to identify sentiment trends.&lt;br&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="95.00000000000006" y="1070" width="145.31" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-20" value="&lt;b&gt;Feature Extraction&lt;/b&gt;&lt;div&gt;Use CNN to process&amp;nbsp;&lt;/div&gt;&lt;div&gt;the text data and&amp;nbsp;&lt;/div&gt;&lt;div&gt;extract deep features.&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="84.06" y="770" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-22" value="&lt;b&gt;Classification:&lt;/b&gt;&amp;nbsp;&lt;div&gt;Input the feature&lt;/div&gt;&lt;div&gt;vector&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;into an SVM&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;for final sentiment classification.&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="376.87" y="770" width="155.31" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-23" value="&lt;b&gt;Feature Vector&lt;/b&gt;&lt;div&gt;Flatten the CNN&#39;s&lt;/div&gt;&lt;div&gt;final feature map into&amp;nbsp;&lt;/div&gt;&lt;div&gt;a vector&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="232.81" y="770" width="155.31" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-24" value="&lt;b&gt;Suffix Removal&lt;/b&gt;&lt;div&gt;Apply a set of&amp;nbsp;&lt;/div&gt;&lt;div&gt;predefined rules to&amp;nbsp;&lt;/div&gt;&lt;div&gt;remove common&amp;nbsp;&lt;/div&gt;&lt;div&gt;suffixes from words.&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="-60" y="1190" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-25" value="&lt;b&gt;Text Pre-processing&lt;/b&gt;&lt;div&gt;Use the stemmed&amp;nbsp;&lt;/div&gt;&lt;div&gt;word&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;as features&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;for the&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;models&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="232.81" y="1190" width="155.31" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pX917nvvnTFLL8pPLjwM-26" value="&lt;b&gt;Normalization&lt;/b&gt;&lt;div&gt;Transform words to&lt;/div&gt;&lt;div&gt;their root form&lt;br&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="88.75" y="1190" width="155.31" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

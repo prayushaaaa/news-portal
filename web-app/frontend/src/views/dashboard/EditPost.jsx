@@ -82,8 +82,9 @@ function EditPost() {
         formdata.append("image", post.image.file);
         formdata.append("description", post.description);
         formdata.append("tags", post.tags);
-        formdata.append("category", post.category);
+        formdata.append("category", post.category.id);
         formdata.append("post_status", post.status);
+        console.log(post.category.id)
         try {
             const response = await apiInstance.patch(`author/dashboard/post-detail/${userId}/${param.id}/`, formdata, {
                 headers: {

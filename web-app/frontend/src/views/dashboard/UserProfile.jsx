@@ -74,13 +74,13 @@ function UserProfile() {
                                                 <strong>Country:</strong>
                                             </div>
                                             <div className="col-6 mb-2 text-muted">
-                                                {userProfile.user.country || "Not specified"}
+                                                {userProfile.country || "Not specified"}
                                             </div>
                                             <div className="col-6 mb-2">
                                                 <strong>Social Media:</strong>
                                             </div>
                                             <div className="col-6 mb-2 text-muted">
-                                                {userProfile.user.facebook || "Not provided"}
+                                                {userProfile.facebook || "Not provided"}
                                             </div>
                                         </div>
                                         {/* Edit Profile Button */}

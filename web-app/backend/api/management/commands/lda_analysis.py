@@ -21,7 +21,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # Define custom stop words
         stop_words = set(stopwords.words('english')).union({
-            "the", "of", "to", "in", "and", "is", "that", "a", "has", "was", "will", "be"
+            "the", "of", "to", "in", "and", "is", "that", "a", "has", "was", "will", "be","per"
         })
 
         def clean_text(text):
