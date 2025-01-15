@@ -82,14 +82,14 @@ function Login() {
                                     {/* Checkbox */}
                                     <div className="d-lg-flex justify-content-between align-items-center mb-4">
                                         <div className="form-check">
-                                            <input type="checkbox" className="form-check-input" id="rememberme" required="" />
-                                            <label className="form-check-label" htmlFor="rememberme">
+                                            {/* <input type="checkbox" className="form-check-input" id="rememberme" required="" /> */}
+                                            {/* <label className="form-check-label" htmlFor="rememberme">
                                                 Remember me
-                                            </label>
+                                            </label> */}
                                             <div className="invalid-feedback">You must agree before submitting.</div>
                                         </div>
                                         <div>
-                                            <Link to="/forgot-password/">Forgot your password?</Link>
+                                            {/* <Link to="/forgot-password/">Forgot your password?</Link> */}
                                         </div>
                                     </div>
                                     <div>
