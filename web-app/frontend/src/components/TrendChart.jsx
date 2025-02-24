@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label } from "recharts";
 
 const TrendChart = ({ data }) => {
   const navigate = useNavigate();
@@ -21,6 +21,18 @@ const TrendChart = ({ data }) => {
     return value;
   };
 
+  const customizedTooltip = (props) => {
+    if (props.payload && props.payload.length) {
+      const { payload } = props.payload[0];
+      return (
+        <div className="custom-tooltip">
+          <p className="label" style={{backgroundColor: 'whitesmoke',padding:'10px'}}>{`${payload.date}`}<br/> {`${yAxisTickFormatter(payload.sentiment)}`}</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
   const dotClicked = (news_article) => {
     navigate(`/news-detail/${news_article}`);
   };
@@ -34,8 +46,10 @@ const TrendChart = ({ data }) => {
           domain={[-1, 1]}
           ticks={[-1, 0, 1]}
           tickFormatter={yAxisTickFormatter}
-        />
-        <Tooltip />
+        >
+          <Label value="Sentiment" offset={-5} position="insideLeft" />
+        </YAxis>
+        <Tooltip content={customizedTooltip} />
         <Line
           type="monotone"
           dataKey="sentiment"

@@ -132,7 +132,7 @@ function Index() {
                         <div className="hero-overlay"></div>
                         <div className="hero-content">
                             <h1>{blogs[0].title}</h1>
-                            <p>{blogs[0].description}</p>
+                            {/* <p>{blogs[0].description}</p> */}
                             <Link to={`/blog-detail/${blogs[0].id}`} className="btn btn-primary">Read More</Link>
                         </div>
                     </section>
